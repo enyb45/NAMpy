@@ -1,5 +1,6 @@
 from nampy.utils.data_utils import DataModule
 from nampy.formulas.formulas import FormulaHandler
+#from nampy.formulas.formulas import FormulaHandler_old
 from keras.callbacks import *
 import pandas as pd
 import tensorflow as tf
@@ -112,6 +113,9 @@ class AdditiveBaseModel(tf.keras.Model):
         batch_size,
         task,
     ):
+        #formula = "zscore ~ c_gender + c_breastf + c_age + m_agebirth + m_height + m_bmi + m_education + m_work + district + region + time +1"
+        #formula = "zscore ~ -1 + MLP(c_age) + MLP(c_breastf) + RandomFourierNet(m_height) + MLP(m_education)"###########################################################        
+       
         self.formula = formula
         self.val_data = val_data
         self.data = data
@@ -129,7 +133,7 @@ class AdditiveBaseModel(tf.keras.Model):
             self.fit_intercept,
             network_identifier,
             self.feature_information,
-        ) = self.FH.extract_formula_data(self.formula, self.data)
+        ) = self.FH.extract_formula_data(self.formula, self.data) ################### Ici on built la formule
 
         network_identifier.append(self.target_name)
         helper_idx = self.feature_names + [self.target_name]

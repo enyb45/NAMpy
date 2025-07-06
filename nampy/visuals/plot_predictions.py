@@ -299,10 +299,15 @@ def plot_multi_output(
             count = len(shapefunc_keys)
             ax = axs[idx, dist_param]  # Get the current Axes instance on the grid
 
-            if count == 2:
+            """ if count == 2:
                 plot_interaction_lss(
                     ax, preds[key], shapefunc_keys, model.data, dist_param
-                )
+                )"""
+            if count == 2 and isinstance(preds[key], dict) and all(k in preds[key] for k in ["X1", "X2", "predictions"]):
+                    plot_interaction_lss(
+                        ax, preds[key], shapefunc_keys, model.data, dist_param
+                    )
+
             elif count == 1:
                 if key in model.CAT_FEATURES:
                     plot_categorical_feature(
