@@ -19,7 +19,7 @@ def all_features_additive_model(df: pd.DataFrame, target: str, intercept: bool =
     if intercept:
         my_formula += " 1"
     else:
-        my_formula += " - 1"
+        my_formula += " -1"
     for col in df.columns:
         if col == target:
             pass

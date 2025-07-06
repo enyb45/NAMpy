@@ -129,7 +129,7 @@ def visualize_distributional_regression_predictions(model, datapoints=True, port
 
         return fig
 
-    app.run_server(debug=True, port=port)
+    app.run(debug=True, port=port)
 
 
 def visualize_distributional_additive_model(
@@ -324,4 +324,4 @@ def visualize_distributional_additive_model(
         )
         return fig
 
-    app.run_server(debug=True, port=port)
+    app.run(debug=True, port=port)

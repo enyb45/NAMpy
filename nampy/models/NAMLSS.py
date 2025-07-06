@@ -120,6 +120,8 @@ class NAMLSS(AdditiveBaseModel):
         """
         Build the model. This method should be called before training the model.
         """
+        print("------------- NAMLSS-BUILT IS CALLED --------------")
+
         if self.model_built:
             return
 
@@ -237,6 +239,7 @@ class NAMLSS(AdditiveBaseModel):
         Returns:
             Output tensor.
         """
+        print("------------- NAMLSS-CALL IS CALLED --------------")
         feature_preds = [network(inputs) for network in self.feature_nets]
         if training:
             feature_preds_dropout = [
@@ -316,6 +319,8 @@ class NAMLSS(AdditiveBaseModel):
         preds = self.predict(self.training_dataset)["summed_output"]
         visualize_distribution(self.family, preds)
 
+  
+
     def plot(self, port=8050, interactive=True, interaction=True):
         """NAMLSS visualization function
 
@@ -337,3 +342,4 @@ class NAMLSS(AdditiveBaseModel):
 
     def _plot_all_effects(self, port=8505):
         visualize_distributional_additive_model(self, port=port)
+    
