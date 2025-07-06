@@ -1,0 +1,13 @@
+
+dash
+keras<3.0.0
+matplotlib
+pandas
+plotly
+scikit-learn
+scipy
+seaborn
+tensorflow<=2.15.1
+tensorflow_probability<=0.23
+tqdm
+setuptools

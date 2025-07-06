@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+*.pyo
+*.json
+examples_old/
+NATT_ablation_interaction.ipynb
+NATT_ablation.ipynb
