@@ -1,0 +1,2 @@
+time,n,mu_eff,mu_sd,var_pre_eff,var_pre_sd,var_post_delta,var_post_sd,mu_eff_centered,mu_eff_ratio_p90
+1,1000,-11.191765,0.0,6.240894,0.0,6.240893840789795,0.0,1.9073486e-06,1907.3486
