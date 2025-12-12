@@ -10,7 +10,7 @@ import pandas as pd
 from nampy.visuals.plot_predictions import*
 from nampy.formulas.formulas import*
 import matplotlib.pyplot as plt
-import numpy as np
+
 
 
 data = pd.read_csv('zambia_height92.raw', sep='\t')
@@ -57,40 +57,14 @@ print("Test Loss:", loss)
 
 preds_all=namlss._get_plotting_preds()
 print("******************************************** Graphic and static  Overview *********************************")
+print('***************************************** PREDICTIONS ON TRAINING DATA ************************', namlss._get_plotting_preds(training_data=True)[:5])
+
 print('PRED ALL ',preds_all)
-namlss._plot_all_effects()
+#namlss._plot_all_effects()
 #namlss._plot_single_effects()
 #namlss.plot_dist() 
 #namlss.plot(interactive=False)
 #plot_additive_model(model=namlss)
 #plot_multi_output(model=namlss)
-
-# 🔥 Récupérer toutes les contributions des shape functions
-mu_total = np.zeros(preds_all['Shapefunction0'].shape[0])
-sigma_total = np.zeros(preds_all['Shapefunction0'].shape[0])
-
-for key in preds_all.keys():
-    shape_func = preds_all[key]
-    mu_total += shape_func[:, 0]   # Somme des contributions à mu
-    sigma_total += shape_func[:, 1]  # Somme des contributions à sigma
-
-print("\n📌 μ prédits (premiers 5) :", mu_total[:5])
-print("📌 σ prédits (premiers 5) :", sigma_total[:5])
-
-
-
-print('***************************************** PREDICTIONS ON TRAINING DATA ************************', namlss._get_plotting_preds(training_data=True)[:5])
-
-# === Calcul du z-score prédictif sur le jeu de test ===
-
-# Prédictions du modèle sur X_test
-preds = namlss.predict(X_test)
-mu_pred = preds[:, 0]
-sigma_pred = preds[:, 1]
-
-# Calcul du z-score pour chaque observation du test
-z_scores = (y_test.values - mu_pred) / sigma_pred
-
-print("\n📊 Premiers z-scores prédits :", z_scores[:5])
 
 
